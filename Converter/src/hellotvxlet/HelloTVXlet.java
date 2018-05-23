@@ -304,6 +304,8 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
                 scene.add(knop4);
                 
                 scene.add(tekstLabel1);
+                scene.repaint();
+                knop3.requestFocus();
                 System.out.println("Euro to");
                 
             }
@@ -314,6 +316,7 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
                 scene.add(knop8);
                 scene.add(tekstLabel4);
                 knop7.requestFocus();
+                scene.repaint();
                 System.out.println("To Euro");
                 
             } 
@@ -321,12 +324,15 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
                     scene.removeAll();
                     scene.add(knop5);
                     scene.add(knop6);
+                    scene.repaint();
+                    knop5.requestFocus();
                 }
              
              if(e.getActionCommand()=="knop4_actioned"){
                  scene.removeAll();
                  scene.add(knop10);
                  scene.add(knop11);
+                 scene.repaint();
                  knop10.requestFocus();
                  
              }
@@ -335,6 +341,8 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
                         scene.removeAll();
                         scene.add(tekstLabel2);
                         scene.add(home);
+                        scene.repaint();
+                        home.requestFocus();
                     }
              
              if(e.getActionCommand()=="knop6_actioned"){
@@ -342,11 +350,14 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
                         scene.add(tekstLabel3);
                         scene.add(home);
                         home.requestFocus();
+                        scene.repaint();
              }
              
              if(e.getActionCommand()=="knop7_actioned"){
                  scene.removeAll();
                  scene.add(knop9);
+                 scene.repaint();
+                 knop9.requestFocus();
                  
              }
              
@@ -354,17 +365,23 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
                  scene.removeAll();
                  scene.add(knop12);
                  knop12.requestFocus();
+                 scene.repaint();
              }
              
              if(e.getActionCommand()=="knop9_actioned"){
                  scene.remove(knop9);
                  scene.add(tekstLabel5);
+                 scene.add(home);
+                 scene.repaint();
+                 home.requestFocus();
              }
              
              if(e.getActionCommand()=="knop10_actioned"){
                  scene.removeAll();
                  scene.add(tekstLabel6);
                  scene.add(home);
+                 scene.repaint();
+                 home.requestFocus();
                  
              }
              
@@ -372,19 +389,25 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
                  scene.removeAll();
                  scene.add(tekstLabel7);
                  scene.add(home);
+                 scene.repaint();
+                 home.requestFocus();
              }
              
              if(e.getActionCommand()=="knop12_actioned"){
                  scene.remove(knop12);
                  scene.add(tekstLabel8);
-                 
-                 
+                 scene.add(home);
+                 home.requestFocus();
+                 scene.repaint();
+                    
              }
              
              if(e.getActionCommand()=="home_actioned"){
                  scene.removeAll();
                  scene.add(knop1);
                  scene.add(knop2);
+                 scene.repaint();
+                 knop1.requestFocus();
                  
              }
              
