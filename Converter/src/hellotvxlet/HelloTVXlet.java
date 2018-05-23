@@ -25,8 +25,8 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
     private boolean debug=true;
     
     
-    private HTextButton knop1, knop2, knop3, knop4, knop5, knop6, knop7, knop8, knop9;
-    private HStaticText tekstLabel1, tekstLabel2, tekstLabel3, tekstLabel4, tekstLabel5, tekstLabel6;
+    private HTextButton home,knop1, knop2, knop3, knop4, knop5, knop6, knop7, knop8, knop9, knop10, knop11, knop12;
+    private HStaticText tekstLabel1, tekstLabel2, tekstLabel3, tekstLabel4, tekstLabel5, tekstLabel6, tekstLabel7, tekstLabel8;
                 
     //background
     public void notifyRelease(ResourceProxy proxy){}
@@ -61,6 +61,12 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
             //een instantie van de Scene aanvragen aan de factory.
             scene = HSceneFactory.getInstance().getBestScene(sceneTemplate);
             
+            
+            home = new HTextButton("home");
+            home.setLocation(280,400);
+            home.setSize(180,50);
+            home.setBackground(new DVBColor(103,224,206,179));
+            home.setBackgroundMode(HVisible.BACKGROUND_FILL);
             
             //knoppen startpagina
             knop1 = new HTextButton("euro to");
@@ -100,6 +106,24 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
             knop6.setBackground(new DVBColor(103,224,206,179));
             knop6.setBackgroundMode(HVisible.BACKGROUND_FILL);
             
+            knop10 = new HTextButton("Dollar");
+            knop10.setLocation (500,210);
+            knop10.setSize(200,50);
+            knop10.setBackground(new DVBColor(103,224,206,179));
+            knop10.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+            knop11 = new HTextButton("Deense Kronen");
+            knop11.setLocation (500,270);
+            knop11.setSize(200,50);
+            knop11.setBackground(new DVBColor(103,224,206,179));
+            knop11.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+            knop12 = new HTextButton("1");
+            knop12.setLocation (100,210);
+            knop12.setSize(50,50);
+            knop12.setBackground(new DVBColor(103,224,206,179));
+            knop12.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
             
             //knoppen To Euro
             knop7 = new HTextButton("dollar");
@@ -121,6 +145,8 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
             knop9.setBackgroundMode(HVisible.BACKGROUND_FILL);
             
             
+            home.setFocusTraversal(null,null,null,null);
+            
             //knoppen startpagina
             knop1.setFocusTraversal(null, knop2, null, null); //op, neer, links, rechts
             knop2.setFocusTraversal(knop1,null,null,null);
@@ -130,16 +156,22 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
             knop4.setFocusTraversal(null,null,knop3,null);
             knop5.setFocusTraversal(knop6,knop6,null,null);
             knop6.setFocusTraversal(knop5,null,null,null);
+            knop10.setFocusTraversal(knop11,knop11,null,null);
+            knop11.setFocusTraversal(knop10,knop10,null,null);
             
             //knoppen To euro
             knop7.setFocusTraversal(null,knop8,null,null);
             knop8.setFocusTraversal(knop7,null,null,null);
             knop9.setFocusTraversal(null,null,null,null);
+            
                     
             scene.add(knop1);
             scene.add(knop2);
             
             knop1.requestFocus();
+            
+            //homebutton
+            home.setActionCommand("home_actioned");
             
             //knoppen startpagina
             knop1.setActionCommand("knop1_actioned");
@@ -150,11 +182,17 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
             knop4.setActionCommand("knop4_actioned");
             knop5.setActionCommand("knop5_actioned");
             knop6.setActionCommand("knop6_actioned");
+            knop10.setActionCommand("knop10_actioned");
+            knop11.setActionCommand("knop11_actioned");
+            knop12.setActionCommand("knop12_actioned");
             
             //knopen To euro
             knop7.setActionCommand("knop7_actioned");
             knop8.setActionCommand("knop8_actioned");
             knop9.setActionCommand("knop9_actioned");
+            
+            
+            home.addHActionListener(this);
             
             //knopen startpagina
             knop1.addHActionListener(this);
@@ -165,6 +203,9 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
             knop4.addHActionListener(this);
             knop5.addHActionListener(this);
             knop6.addHActionListener(this);
+            knop10.addHActionListener(this);
+            knop11.addHActionListener(this);
+            knop12.addHActionListener(this);
             
             //knopen To euro
             knop7.addHActionListener(this);
@@ -203,11 +244,23 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
             tekstLabel5.setBackground(new DVBColor(103,224,206,179));
             tekstLabel5.setBackgroundMode(HVisible.BACKGROUND_FILL);
             
-            tekstLabel6 = new HStaticText("1 deense kroon is 0.13 euro");
+            tekstLabel6 = new HStaticText("5 euro is 5,89 dollar");
             tekstLabel6.setLocation(150,250);
             tekstLabel6.setSize(400,50);
             tekstLabel6.setBackground(new DVBColor(103,224,206,179));
             tekstLabel6.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+            tekstLabel7 = new HStaticText("5 euro is 37,24 deense kronen");
+            tekstLabel7.setLocation(150,250);
+            tekstLabel7.setSize(400,50);
+            tekstLabel7.setBackground(new DVBColor(103,224,206,179));
+            tekstLabel7.setBackgroundMode(HVisible.BACKGROUND_FILL);
+            
+            tekstLabel8 = new HStaticText("5 euro is 37,24 deense kronen");
+            tekstLabel8.setLocation(150,250);
+            tekstLabel8.setSize(400,50);
+            tekstLabel8.setBackground(new DVBColor(103,224,206,179));
+            tekstLabel8.setBackgroundMode(HVisible.BACKGROUND_FILL);
             
             //HScreen object opvragen
             screen = HScreen.getDefaultHScreen();
@@ -256,47 +309,83 @@ public class HelloTVXlet implements Xlet, ResourceClient, HBackgroundImageListen
             }
              
              if(e.getActionCommand()== "knop2_actioned"){
-                scene.remove(knop1);
-                scene.remove(knop2);
+                scene.removeAll();
                 scene.add(knop7);
                 scene.add(knop8);
                 scene.add(tekstLabel4);
+                knop7.requestFocus();
                 System.out.println("To Euro");
                 
-            }
+            } 
              if(e.getActionCommand()== "knop3_actioned"){
-                    scene.remove(knop3);
-                    scene.remove(knop4);
+                    scene.removeAll();
                     scene.add(knop5);
                     scene.add(knop6);
-                   
-                    
                 }
              
+             if(e.getActionCommand()=="knop4_actioned"){
+                 scene.removeAll();
+                 scene.add(knop10);
+                 scene.add(knop11);
+                 knop10.requestFocus();
+                 
+             }
+             
               if(e.getActionCommand()=="knop5_actioned"){
-                        scene.remove(knop5);
-                        scene.remove(knop6);
-                        scene.remove(tekstLabel1);
+                        scene.removeAll();
                         scene.add(tekstLabel2);
+                        scene.add(home);
                     }
              
              if(e.getActionCommand()=="knop6_actioned"){
-                        scene.remove(knop5);
-                        scene.remove(knop6);
-                        scene.remove(tekstLabel1);
-                        scene.add(tekstLabel4);
+                        scene.removeAll();
+                        scene.add(tekstLabel3);
+                        scene.add(home);
+                        home.requestFocus();
              }
              
              if(e.getActionCommand()=="knop7_actioned"){
-                 scene.remove(knop7);
-                 scene.remove(knop8);
+                 scene.removeAll();
                  scene.add(knop9);
                  
+             }
+             
+             if(e.getActionCommand()=="knop8_actioned"){
+                 scene.removeAll();
+                 scene.add(knop12);
+                 knop12.requestFocus();
              }
              
              if(e.getActionCommand()=="knop9_actioned"){
                  scene.remove(knop9);
                  scene.add(tekstLabel5);
+             }
+             
+             if(e.getActionCommand()=="knop10_actioned"){
+                 scene.removeAll();
+                 scene.add(tekstLabel6);
+                 scene.add(home);
+                 
+             }
+             
+             if(e.getActionCommand()== "knop11_actioned"){
+                 scene.removeAll();
+                 scene.add(tekstLabel7);
+                 scene.add(home);
+             }
+             
+             if(e.getActionCommand()=="knop12_actioned"){
+                 scene.remove(knop12);
+                 scene.add(tekstLabel8);
+                 
+                 
+             }
+             
+             if(e.getActionCommand()=="home_actioned"){
+                 scene.removeAll();
+                 scene.add(knop1);
+                 scene.add(knop2);
+                 
              }
              
         }
